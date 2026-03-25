@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | A Clean Routine</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1f35;--navy2:#162840;--green:#1d9e75;--green-dark:#0f6e56;--cream:#f7f5f0;--white:#fff;--text:#1a1a2e;--muted:#5f6b7a;--border:#e2dfd8;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden}
+
+nav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;position:sticky;top:0;z-index:100;animation:navSlide .5s ease both}
+@keyframes navSlide{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.logo{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;letter-spacing:.02em;text-decoration:none}
+.logo span{color:var(--green)}
+.nav-links{display:flex;gap:2px;align-items:center}
+.nl{font-size:13px;font-weight:500;color:rgba(255,255,255,.7);padding:6px 12px;border-radius:5px;cursor:pointer;border:none;background:none;transition:.2s;text-decoration:none;display:inline-block}
+.nl:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nl.active{color:#fff;background:rgba(29,158,117,.3)}
+.nav-phone{margin-left:12px;background:var(--green);color:#fff;font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:6px;text-decoration:none;letter-spacing:.02em;transition:background .2s;white-space:nowrap}
+.nav-phone:hover{background:var(--green-dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--navy);padding:1rem 2rem;z-index:99;border-top:1px solid rgba(255,255,255,.08)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;color:rgba(255,255,255,.8);font-size:15px;font-weight:500;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover{color:var(--green)}
+
+/* PAGE HERO */
+.page-hero{background:var(--navy);padding:64px 2rem 72px;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 0%,rgba(29,158,117,.12) 0%,transparent 60%)}
+.pg-tag{display:inline-block;background:rgba(29,158,117,.2);color:var(--green);border:1px solid rgba(29,158,117,.3);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px;position:relative;animation:fadeUp .7s .2s ease both}
+.page-hero h1{font-family:'DM Serif Display',serif;font-size:42px;color:#fff;line-height:1.15;margin-bottom:14px;position:relative;animation:fadeUp .7s .35s ease both}
+.page-hero p{color:rgba(255,255,255,.68);font-size:16px;max-width:520px;margin:0 auto;position:relative;animation:fadeUp .7s .5s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+
+
+
+
+/* STORY SECTION */
+.story-section{padding:80px 2rem;max-width:1000px;margin:0 auto}
+.story-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.story-visual{background:var(--navy);border-radius:16px;padding:48px 36px;position:relative;overflow:hidden;min-height:380px;display:flex;flex-direction:column;justify-content:center}
+.story-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%,rgba(29,158,117,.2),transparent 60%)}
+.story-quote{font-family:'DM Serif Display',serif;font-size:34px;color:#fff;line-height:1.35;position:relative;margin-bottom:28px}
+.story-quote em{color:var(--green);font-style:normal}
+.story-tagline{display:flex;gap:10px;flex-direction:column;position:relative}
+.tagline-item{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.65)}
+.tagline-dot{width:6px;height:6px;background:var(--green);border-radius:50%;flex-shrink:0}
+.story-content .section-tag{font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px}
+.story-content h2{font-family:'DM Serif Display',serif;font-size:32px;color:var(--navy);line-height:1.2;margin-bottom:20px}
+.story-content p{font-size:14.5px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+.story-content p:last-of-type{margin-bottom:0}
+
+
+
+/* VALUES */
+.values-section{padding:80px 2rem;background:var(--navy)}
+.values-inner{max-width:1000px;margin:0 auto}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.val-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:32px 28px;opacity:1;transform:none,border-color .25s,box-shadow .3s}
+
+
+
+
+.val-card:hover{border-color:rgba(29,158,117,.5);box-shadow:0 12px 32px rgba(29,158,117,.15);background:rgba(255,255,255,.1)}
+.val-icon{width:48px;height:48px;background:rgba(29,158,117,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:background .25s,transform .3s}
+.val-card:hover .val-icon{background:rgba(29,158,117,.2);transform:scale(1.08)}
+.val-icon svg{width:24px;height:24px;fill:var(--green)}
+.val-card h3{font-size:17px;font-weight:600;color:#fff;margin-bottom:10px;font-family:'DM Serif Display',serif}
+.val-card p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7}
+
+
+
+/* CTA */
+.cta-section{background:var(--green);padding:72px 2rem;text-align:center}
+.cta-section h2{font-family:'DM Serif Display',serif;font-size:34px;color:#fff;margin-bottom:14px}
+.cta-section p{color:rgba(255,255,255,.85);font-size:16px;margin-bottom:30px}
+.btn-white{background:#fff;color:var(--green-dark);font-size:14px;font-weight:600;padding:14px 30px;border-radius:8px;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;text-decoration:none;display:inline-block;margin:0 8px}
+.btn-white:hover{background:var(--cream);transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.15)}
+.btn-outline-white{background:transparent;color:#fff;font-size:14px;font-weight:500;padding:14px 30px;border-radius:8px;border:1.5px solid rgba(255,255,255,.5);cursor:pointer;transition:background .2s,transform .2s;text-decoration:none;display:inline-block;margin:0 8px}
+.btn-outline-white:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+
+footer{background:var(--navy);padding:48px 2rem 28px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;max-width:1000px;margin:0 auto;flex-wrap:wrap;gap:8px}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.3)}
+
+@media(max-width:768px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .page-hero h1{font-size:30px}
+  .story-split{grid-template-columns:1fr}
+  .story-visual{min-height:auto;padding:36px 28px}
+  .values-grid{grid-template-columns:1fr}
+  .commit-inner{grid-template-columns:1fr}
+  .story-section{padding:56px 1.25rem}
+  .values-section{padding:56px 1.25rem}
+  .commit-section{padding:56px 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">A <span>Clean</span> Routine</a>
+  <div class="nav-links">
+    <a class="nl" href="index.html">Home</a>
+    <a class="nl" href="services.html">Services</a>
+    <a class="nl active" href="about.html">About</a>
+    <a class="nl" href="quote.html">Get a Quote</a>
+    <a class="nl" href="contact.html">Contact</a>
+    <a class="nav-phone" href="tel:6788333847">&#9990; (678) 833-3847</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="quote.html">Get a Quote</a>
+  <a href="contact.html">Contact</a>
+  <a href="tel:6788333847" style="color:var(--green);font-weight:600;">&#9990; (678) 833-3847</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="pg-tag">Our Story</div>
+  <h1>Built on Accountability</h1>
+  <p>A Clean Routine was founded on a simple belief: commercial cleaning should be reliable, documented, and built around your schedule.</p>
+</div>
+
+<!-- STORY -->
+<div class="story-section">
+  <div class="story-split">
+    <div class="story-visual reveal">
+      <div class="story-quote">The industry standard is a promise. <em>Ours comes with proof.</em></div>
+      <div class="story-tagline">
+        <div class="tagline-item"><span class="tagline-dot"></span>Photo documented after every visit</div>
+        <div class="tagline-item"><span class="tagline-dot"></span>Scheduled around your operations</div>
+        <div class="tagline-item"><span class="tagline-dot"></span>Professionals you can trust in your facility</div>
+        <div class="tagline-item"><span class="tagline-dot"></span>Quotes delivered within 24 hours</div>
+      </div>
+    </div>
+    <div class="story-content">
+      <div class="reveal"><div class="section-tag">Who We Are</div></div>
+      <div class="reveal reveal-d1"><h2>A Metro Atlanta Company Built for Metro Atlanta Businesses</h2></div>
+      <div class="reveal reveal-d2">
+        <p>A Clean Routine is a Metro Atlanta commercial cleaning company built from the ground up with one priority: accountability. In an industry where the most common complaint is inconsistency, we built our entire model around solving that problem.</p>
+        <p>Every cleaning professional we deploy is background-checked, insured, and trained to follow a documented cleaning checklist. Every job ends with photo documentation sent directly to you so you always know exactly what was done and when.</p>
+        <p>We serve office buildings, medical facilities, executive suites, retail spaces, auto dealerships, and property management portfolios across Metro Atlanta. Whether you need daily janitorial service or monthly deep cleaning, we build a schedule around your operations, not ours.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<div class="values-section">
+  <div class="values-inner">
+    <div class="reveal" style="text-align:center"><div class="section-tag" style="display:inline-block;color:var(--green)">What Drives Us</div></div>
+    <div class="reveal reveal-d1" style="text-align:center"><h2 style="font-family:'DM Serif Display',serif;font-size:32px;color:#fff;margin-bottom:8px">Our Core Values</h2></div>
+    <div class="reveal reveal-d2" style="text-align:center"><p style="color:rgba(255,255,255,.65);font-size:15px;max-width:480px;margin:0 auto">Three principles that shape every decision we make, every professional we hire, and every job we accept.</p></div>
+    <div class="values-grid">
+      <div class="val-card">
+        <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+        <h3>Accountability</h3>
+        <p>We do not ask you to take our word for it. Every job is documented, verified, and confirmed before it is considered complete. Accountability is not a feature we offer: it is the foundation we were built on.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h3>Reliability</h3>
+        <p>We show up when we say we will, clean to the standard we promised, and own the result every time. Reliability is not something we strive for: it is the minimum we accept from ourselves on every single job.</p>
+      </div>
+      <div class="val-card">
+        <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+        <h3>Professionalism</h3>
+        <p>From the first phone call to the last photo documented visit, every interaction with A Clean Routine reflects the standard your business deserves. Our professionals represent your facility with the same care you would.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section reveal">
+  <h2>Ready to Work With Us?</h2>
+  <p>Get a free custom quote for your facility within 24 hours.</p>
+  <a href="quote.html" class="btn-white">Request a Free Quote</a>
+  <a href="tel:6788333847" class="btn-outline-white">&#9990; Call (678) 833-3847</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:1000px;margin:0 auto;padding-bottom:28px;">
+    <div style="margin-bottom:24px;">
+      <div style="font-family:'DM Serif Display',Georgia,serif;font-size:18px;color:#fff;margin-bottom:10px;">A <span style="color:#1d9e75;">Clean</span> Routine</div>
+    </div>
+    <div style="margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;">Pages</div>
+      <div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:8px 28px;">
+        <a href="index.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Home</a>
+        <a href="services.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Services</a>
+        <a href="about.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">About</a>
+        <a href="quote.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Get a Quote</a>
+        <a href="contact.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;">Contact</div>
+      <div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:6px 28px;">
+        <a href="tel:6788333847" style="font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;">(678) 833-3847</a>
+        <span style="font-size:13px;color:rgba(255,255,255,.55);" id="footer-email"></span>
+        <span style="font-size:13px;color:rgba(255,255,255,.55);">Available Mon&#8211;Sat</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&#169; 2026 A Clean Routine LLC. All rights reserved.</p>
+    <p>Reliable. Professional. Detail-Driven.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footer-email").textContent="contact@acroutine.com";
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function revealAll(){document.querySelectorAll('.reveal,.val-card').forEach(el=>el.classList.add('visible'));}
+if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.05});
+  document.querySelectorAll('.reveal,.val-card').forEach(el=>obs.observe(el));
+  setTimeout(revealAll,800);
+}else{revealAll();}
+</script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Clean Routine | Metro Atlanta Commercial Cleaning</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1f35;--navy2:#162840;--green:#1d9e75;--green-dark:#0f6e56;--cream:#f7f5f0;--white:#fff;--text:#1a1a2e;--muted:#5f6b7a;--border:#e2dfd8;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden}
+
+nav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;position:sticky;top:0;z-index:100;animation:navSlide .5s ease both}
+@keyframes navSlide{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.logo{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;letter-spacing:.02em;text-decoration:none}
+.logo span{color:var(--green)}
+.nav-links{display:flex;gap:2px}
+.nl{font-size:13px;font-weight:500;color:rgba(255,255,255,.7);padding:6px 12px;border-radius:5px;cursor:pointer;border:none;background:none;transition:.2s;text-decoration:none;display:inline-block}
+.nl:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nl.active{color:#fff;background:rgba(29,158,117,.3)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--navy);padding:1rem 2rem;z-index:99;border-top:1px solid rgba(255,255,255,.08)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;color:rgba(255,255,255,.8);font-size:15px;font-weight:500;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover{color:var(--green)}
+
+.hero{background:var(--navy);padding:80px 2rem 100px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 0%,rgba(29,158,117,.14) 0%,transparent 60%)}
+.hero-tag{display:inline-block;background:rgba(29,158,117,.2);color:var(--green);border:1px solid rgba(29,158,117,.3);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:24px;position:relative;animation:fadeUp .7s .2s ease both}
+.hero h1{font-family:'DM Serif Display',serif;font-size:48px;color:#fff;line-height:1.12;max-width:680px;margin:0 auto 20px;position:relative;animation:fadeUp .7s .4s ease both}
+.hero h1 em{color:var(--green);font-style:normal}
+.hero-outcome{color:rgba(255,255,255,.78);font-size:17px;max-width:520px;margin:0 auto 40px;position:relative;animation:fadeUp .7s .55s ease both;line-height:1.75}
+.btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;animation:fadeUp .7s .7s ease both}
+.btn-primary{background:var(--green);color:#fff;font-size:14px;font-weight:600;padding:14px 30px;border-radius:8px;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;letter-spacing:.02em;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(29,158,117,.3)}
+.btn-outline{background:transparent;color:#fff;font-size:14px;font-weight:500;padding:14px 30px;border-radius:8px;border:1.5px solid rgba(255,255,255,.35);cursor:pointer;transition:background .2s,transform .2s;text-decoration:none;display:inline-block}
+.btn-outline:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.stats-bar{background:var(--navy2);display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.08)}
+.stat-item{padding:24px 16px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.stat-item:last-child{border-right:none}
+
+
+
+
+
+.stat-num{font-family:'DM Serif Display',serif;font-size:30px;color:var(--green);display:block;line-height:1}
+.stat-label{font-size:12px;color:rgba(255,255,255,.55);margin-top:5px;display:block;letter-spacing:.02em}
+
+.reveal{opacity:1;transform:none}
+
+
+
+
+.section{padding:72px 2rem;max-width:1000px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:48px}
+.section-tag{font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px}
+.section h2{font-family:'DM Serif Display',serif;font-size:34px;color:var(--navy);line-height:1.2}
+
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 28px;transition:border-color .25s,box-shadow .3s}
+
+
+
+
+.card:hover{border-color:var(--green);transform:translateY(-5px);box-shadow:0 14px 36px rgba(29,158,117,.12)}
+.card-icon{width:44px;height:44px;background:rgba(29,158,117,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:background .25s,transform .3s}
+.card:hover .card-icon{background:rgba(29,158,117,.2);transform:scale(1.1)}
+.card-icon svg{width:22px;height:22px;fill:var(--green)}
+.card h3{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:10px}
+.card p{font-size:13.5px;color:var(--muted);line-height:1.65}
+
+.hiw-section{background:var(--white);padding:80px 2rem}
+.hiw-inner{max-width:1000px;margin:0 auto}
+.hiw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:52px;position:relative}
+.hiw-grid::before{content:'';position:absolute;top:36px;left:calc(16.66% + 16px);right:calc(16.66% + 16px);height:2px;background:repeating-linear-gradient(90deg,var(--green) 0,var(--green) 8px,transparent 8px,transparent 16px);opacity:.35}
+.hiw-step{text-align:center;padding:0 28px;}
+
+
+
+
+.hiw-circle{width:72px;height:72px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;position:relative;transition:background .3s,transform .3s}
+.hiw-step:hover .hiw-circle{background:var(--green);transform:scale(1.08)}
+.hiw-circle svg{width:28px;height:28px;fill:#fff}
+.hiw-step-num{position:absolute;top:-4px;right:-4px;width:22px;height:22px;background:var(--green);border-radius:50%;font-size:11px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;line-height:1}
+.hiw-step:hover .hiw-step-num{background:var(--navy)}
+.hiw-step h3{font-size:16px;font-weight:600;color:var(--navy);margin-bottom:10px}
+.hiw-step p{font-size:13.5px;color:var(--muted);line-height:1.65;max-width:240px;margin:0 auto}
+
+.industries{padding:72px 2rem;background:var(--cream)}
+.ind-inner{max-width:1000px;margin:0 auto}
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.ind-card{border:1px solid var(--border);border-radius:10px;padding:24px 22px;background:var(--white);transition:border-color .25s,transform .3s,background .25s,box-shadow .3s}
+
+
+
+
+
+
+
+.ind-card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.06)}
+.ind-card h4{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:7px}
+.ind-card p{font-size:13px;color:var(--muted)}
+.ind-arrow{color:var(--green);font-size:18px;margin-top:14px;display:block;transition:transform .25s}
+.ind-card:hover .ind-arrow{transform:translateX(5px)}
+
+.cta-section{background:var(--green);padding:72px 2rem;text-align:center}
+.cta-section h2{font-family:'DM Serif Display',serif;font-size:34px;color:#fff;margin-bottom:14px}
+.cta-section p{color:rgba(255,255,255,.85);font-size:16px;margin-bottom:30px}
+.btn-white{background:#fff;color:var(--green-dark);font-size:14px;font-weight:600;padding:14px 30px;border-radius:8px;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;text-decoration:none;display:inline-block}
+.btn-white:hover{background:var(--cream);transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.15)}
+
+footer{background:var(--navy);padding:48px 2rem 28px}
+.footer-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:36px}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:19px;color:#fff;margin-bottom:12px}
+.footer-logo span{color:var(--green)}
+.footer p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.75}
+.footer h5{font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px}
+.footer a{display:inline;font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px;text-decoration:none;transition:color .2s}
+.footer a:hover{color:var(--green)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;max-width:1000px;margin:0 auto}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.3)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero{padding:60px 1.25rem 72px}
+  .hero h1{font-size:32px}
+  .hero-outcome{font-size:15px}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .stat-item:nth-child(2){border-right:none}
+  .stat-item:nth-child(3){border-top:1px solid rgba(255,255,255,.08)}
+  .stat-item:nth-child(4){border-top:1px solid rgba(255,255,255,.08);border-right:none}
+  .section{padding:48px 1.25rem}
+  .cards3{grid-template-columns:1fr}
+  .hiw-grid{grid-template-columns:1fr}
+  .hiw-grid::before{display:none}
+  .ind-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr;gap:28px}.footer-nav-links{display:flex!important;flex-wrap:wrap;flex-direction:row!important}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .hiw-section{padding:56px 1.25rem}
+  .industries{padding:48px 1.25rem}
+  .cta-section{padding:56px 1.25rem}
+  .cta-section h2{font-size:26px}
+}
+@media(max-width:480px){
+  .ind-grid{grid-template-columns:1fr}
+  .hero h1{font-size:28px}
+  .btn-row{flex-direction:column;align-items:center}
+  .btn-primary,.btn-outline{width:100%;max-width:280px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">A <span>Clean</span> Routine</a>
+  <div class="nav-links">
+    <a class="nl active" href="index.html">Home</a>
+    <a class="nl" href="services.html">Services</a>
+    <a class="nl" href="about.html">About</a>
+    <a class="nl" href="quote.html">Get a Quote</a>
+    <a class="nl" href="contact.html">Contact</a>
+    <a href="tel:6788333847" style="margin-left:12px;background:var(--green);color:#fff;font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:6px;text-decoration:none;letter-spacing:.02em;transition:background .2s;white-space:nowrap;" onmouseover="this.style.background='#0f6e56'" onmouseout="this.style.background='#1d9e75'">&#9990; (678) 833-3847</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="quote.html">Get a Quote</a>
+  <a href="contact.html">Contact</a>
+  <a href="tel:6788333847" style="color:var(--green);font-weight:600;">&#9990; (678) 833-3847</a>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">Metro Atlanta Commercial Cleaning</div>
+  <h1>Your Facility Deserves <em>Consistent</em> Excellence</h1>
+  <p class="hero-outcome">Your clients notice a clean space. Your employees perform better in one. We make sure it stays that way.</p>
+  <div class="btn-row">
+    <a href="quote.html" class="btn-primary">Get a Free Quote</a>
+    <a href="services.html" class="btn-outline">View Our Services</a>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num" data-target="1" data-prefix="$" data-suffix="M">$0M</span>
+    <span class="stat-label">General Liability Coverage</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">Licensed</span>
+    <span class="stat-label">Bonded &amp; Insured</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num" data-target="100" data-suffix="%">0%</span>
+    <span class="stat-label">Background-Checked Professionals</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">24/7</span>
+    <span class="stat-label">After-Hours Availability</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <div class="reveal"><div class="section-tag">What Sets Us Apart</div></div>
+    <div class="reveal reveal-d1"><h2>Accountability Built Into Every Visit</h2></div>
+  </div>
+  <div class="cards3">
+    <div class="card">
+      <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
+      <h3>Scheduled Around You</h3>
+      <p>Evenings, weekends, and after-hours cleaning built around your operations. We show up when it is convenient for your business, not ours.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg></div>
+      <h3>Documented Every Visit</h3>
+      <p>Every job ends with photo documentation sent directly to you before it is marked complete. Full visibility, every single time.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div>
+      <h3>Medical-Grade Available</h3>
+      <p>OSHA and HIPAA-certified cleaning professionals available for healthcare facilities that require elevated compliance and sanitation standards.</p>
+    </div>
+  </div>
+</div>
+
+<div class="hiw-section">
+  <div class="hiw-inner">
+    <div class="reveal" style="text-align:center"><div class="section-tag" style="display:inline-block">How It Works</div></div>
+    <div class="reveal reveal-d1" style="text-align:center"><h2 style="font-family:'DM Serif Display',serif;font-size:34px;color:var(--navy);margin-bottom:10px">Simple. Fast. Hassle-Free.</h2></div>
+    <div class="reveal reveal-d2" style="text-align:center"><p style="color:var(--muted);font-size:15px;max-width:480px;margin:0 auto">Getting started with A Clean Routine takes minutes, not days. No lengthy site visits, no back-and-forth, no surprises.</p></div>
+    <div class="hiw-grid">
+      <div class="hiw-step">
+        <div class="hiw-circle"><span class="hiw-step-num">1</span><svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+        <h3>Submit Your Intake Form</h3>
+        <p>Tell us about your facility using our simple online form. No site visit required. Takes less than five minutes to complete.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-circle"><span class="hiw-step-num">2</span><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
+        <h3>Receive Your Custom Quote</h3>
+        <p>We review your facility details and send a tailored quote within 24 hours, built around your schedule and cleaning needs.</p>
+      </div>
+      <div class="hiw-step">
+        <div class="hiw-circle"><span class="hiw-step-num">3</span><svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg></div>
+        <h3>We Handle Everything</h3>
+        <p>From scheduling to quality control, we manage every detail. After each visit you receive photo documentation confirming the job is done right.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="industries">
+  <div class="ind-inner">
+    <div class="reveal"><div class="section-tag">Industries We Serve</div></div>
+    <div class="reveal reveal-d1"><h2 style="font-family:'DM Serif Display',serif;font-size:30px;color:var(--navy)">Built for Metro Atlanta Businesses</h2></div>
+    <div class="ind-grid">
+      <div class="ind-card"><h4>Office Buildings</h4><p>Daily, weekly, and monthly cleaning for professional office environments.</p><span class="ind-arrow">&#8594;</span></div>
+      <div class="ind-card"><h4>Medical Facilities</h4><p>OSHA-compliant cleaning for urgent care, medical offices, and clinics.</p><span class="ind-arrow">&#8594;</span></div>
+      <div class="ind-card"><h4>Executive Suites</h4><p>Premium cleaning for shared office and coworking environments.</p><span class="ind-arrow">&#8594;</span></div>
+      <div class="ind-card"><h4>Retail Spaces</h4><p>Consistent, scheduled cleaning for retail storefronts and showrooms.</p><span class="ind-arrow">&#8594;</span></div>
+      <div class="ind-card"><h4>Auto Dealerships</h4><p>Showroom and facility cleaning that reflects your brand standards.</p><span class="ind-arrow">&#8594;</span></div>
+      <div class="ind-card"><h4>Property Management</h4><p>Reliable cleaning across single and multi-property portfolios.</p><span class="ind-arrow">&#8594;</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section reveal">
+  <h2>Ready to Get Started?</h2>
+  <p>Tell us about your facility and receive a free, no-obligation quote within 24 hours.</p>
+  <a href="quote.html" class="btn-white">Request a Free Quote</a>
+</div>
+
+<footer>
+  <div style="max-width:1000px;margin:0 auto;padding:0 0 32px;">
+
+    <!-- Top row: logo + tagline -->
+    <div style="margin-bottom:28px;">
+      <div class="footer-logo">A <span>Clean</span> Routine</div>
+      
+    </div>
+
+    <!-- Nav links — always horizontal -->
+    <div style="margin-bottom:24px;">
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;">Pages</div>
+      <div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:8px 28px;">
+        <a href="services.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;white-space:nowrap;transition:color .2s;" onmouseover="this.style.color='#1d9e75'" onmouseout="this.style.color='rgba(255,255,255,.65)'">Services</a>
+        <a href="about.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;white-space:nowrap;transition:color .2s;" onmouseover="this.style.color='#1d9e75'" onmouseout="this.style.color='rgba(255,255,255,.65)'">About</a>
+        <a href="quote.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;white-space:nowrap;transition:color .2s;" onmouseover="this.style.color='#1d9e75'" onmouseout="this.style.color='rgba(255,255,255,.65)'">Get a Quote</a>
+        <a href="contact.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;white-space:nowrap;transition:color .2s;" onmouseover="this.style.color='#1d9e75'" onmouseout="this.style.color='rgba(255,255,255,.65)'">Contact</a>
+      </div>
+    </div>
+
+    <!-- Contact info -->
+    <div>
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;">Contact</div>
+      <div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:6px 28px;">
+        <a href="tel:6788333847" style="font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;">(678) 833-3847</a>
+        <span style="font-size:13px;color:rgba(255,255,255,.55);">contact&#64;acroutine&#46;com</span>
+        <span style="font-size:13px;color:rgba(255,255,255,.55);">Available Mon&#8211;Sat</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&#169; 2026 A Clean Routine LLC. All rights reserved.</p>
+    <p>Reliable. Professional. Detail-Driven.</p>
+  </div>
+</footer>
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function animateCounter(el){
+  const target=parseInt(el.dataset.target);
+  const prefix=el.dataset.prefix||'';
+  const suffix=el.dataset.suffix||'';
+  const duration=1800;
+  const start=performance.now();
+  function update(now){
+    const elapsed=now-start;
+    const progress=Math.min(elapsed/duration,1);
+    const ease=1-Math.pow(1-progress,3);
+    const current=Math.round(ease*target);
+    el.textContent=prefix+current+suffix;
+    if(progress<1)requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+document.querySelectorAll('[data-target]').forEach(el=>animateCounter(el));
+</script>
+        <span style="font-size:13px;color:rgba(255,255,255,.55);">Available Mon&#8211;Sat</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <p>&#169; 2026 A Clean Routine LLC. All rights reserved.</p>
+    <p>Reliable. Professional. Detail-Driven.</p>
+  </div>
+</footer>
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function animateCounter(el){
+  const target=parseInt(el.dataset.target);
+  const prefix=el.dataset.prefix||'';
+  const suffix=el.dataset.suffix||'';
+  const duration=1800;
+  const start=performance.now();
+  function update(now){
+    const elapsed=now-start;
+    const progress=Math.min(elapsed/duration,1);
+    const ease=1-Math.pow(1-progress,3);
+    const current=Math.round(ease*target);
+    el.textContent=prefix+current+suffix;
+    if(progress<1)requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting&&entry

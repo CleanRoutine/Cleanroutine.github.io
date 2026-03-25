@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get a Quote | A Clean Routine</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brand:   #0f1923;
+    --accent:  #1d9e75;
+    --accent2: #0f6e56;
+    --light:   #e1f5ee;
+    --amber:   #854f0b;
+    --amber-bg:#faeeda;
+    --surface: #f8f7f4;
+    --white:   #ffffff;
+    --border:  #e2e0d8;
+    --text:    #1a1a2e;
+    --muted:   #6b6b6b;
+    --error:   #c0392b;
+    --serif:   'DM Serif Display', Georgia, serif;
+    --sans:    'DM Sans', system-ui, sans-serif;
+    --radius:  10px;
+    --shadow:  0 2px 16px rgba(15,25,35,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--surface);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────────────────── */
+  .hero {
+    background: var(--brand);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(29,158,117,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 5vw, 46px);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero h1 em { color: var(--accent); font-style: italic; }
+  .hero-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 15px;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    font-weight: 300;
+  }
+  .hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.75);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ── PROGRESS BAR ───────────────────────────────────────────────── */
+  .progress-wrap {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .progress-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(.4,0,.2,1);
+    width: 0%;
+  }
+  .progress-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: right;
+  }
+
+  /* ── FORM SHELL ─────────────────────────────────────────────────── */
+  .form-outer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── SECTIONS ───────────────────────────────────────────────────── */
+  .form-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    animation: fadeUp 0.4s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .form-section:nth-child(1) { animation-delay: 0.05s; }
+  .form-section:nth-child(2) { animation-delay: 0.10s; }
+  .form-section:nth-child(3) { animation-delay: 0.15s; }
+  .form-section:nth-child(4) { animation-delay: 0.20s; }
+  .form-section:nth-child(5) { animation-delay: 0.25s; }
+  .form-section:nth-child(6) { animation-delay: 0.30s; }
+  .form-section:nth-child(7) { animation-delay: 0.35s; }
+
+  .section-header {
+    background: var(--brand);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--white);
+    font-weight: 400;
+  }
+  .section-body { padding: 28px 24px; }
+
+  /* ── FORM FIELDS ────────────────────────────────────────────────── */
+  .field { margin-bottom: 22px; }
+  .field:last-child { margin-bottom: 0; }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .field-row .field { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 7px;
+    letter-spacing: 0.01em;
+  }
+  label .req { color: var(--accent); margin-left: 3px; }
+  label .opt { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 4px; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 11px 14px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--accent);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(29,158,117,0.12);
+  }
+  input.error, select.error, textarea.error {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
+  }
+  textarea { resize: vertical; min-height: 90px; }
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6b6b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+
+  .error-msg {
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 5px;
+    display: none;
+  }
+  .error-msg.show { display: block; }
+
+  /* ── CHECKBOX GRID ──────────────────────────────────────────────── */
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .check-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .check-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+    background: var(--surface);
+    font-size: 13px;
+    color: var(--text);
+  }
+  .check-item:hover { border-color: var(--accent); background: var(--light); }
+  .check-item input[type="checkbox"],
+  .check-item input[type="radio"] {
+    width: 16px; height: 16px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    background: var(--white);
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.15s;
+    padding: 0;
+    box-shadow: none;
+  }
+  .check-item input[type="radio"] { border-radius: 50%; }
+  .check-item input[type="checkbox"]:checked,
+  .check-item input[type="radio"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .check-item input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 4px; top: 1px;
+    width: 5px; height: 9px;
+    border: 2px solid white;
+    border-top: none; border-left: none;
+    transform: rotate(40deg);
+  }
+  .check-item input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: white;
+  }
+  .check-item:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--light);
+    color: var(--accent2);
+    font-weight: 500;
+  }
+
+  /* ── CALLOUTS ───────────────────────────────────────────────────── */
+  .callout {
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .callout-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+  .callout.info  { background: var(--light);     color: var(--accent2); border-left: 3px solid var(--accent); }
+  .callout.warn  { background: var(--amber-bg);  color: var(--amber);   border-left: 3px solid var(--amber); }
+
+  /* ── DIVIDER ────────────────────────────────────────────────────── */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+  /* ── SUBMIT SECTION ─────────────────────────────────────────────── */
+  .submit-section {
+    background: var(--brand);
+    border-radius: 14px;
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .submit-section h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .submit-section p {
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+  .btn-submit {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    padding: 15px 48px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-submit:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(29,158,117,0.35); }
+  .btn-submit:active { transform: translateY(0); }
+  .btn-submit svg { width: 16px; height: 16px; }
+
+  /* ── SUCCESS STATE ──────────────────────────────────────────────── */
+  .success-screen {
+    display: none;
+    max-width: 540px;
+    margin: 60px auto;
+    text-align: center;
+    padding: 0 24px;
+    animation: fadeUp 0.5s ease;
+  }
+  .success-icon {
+    width: 72px; height: 72px;
+    background: var(--light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 32px;
+  }
+  .success-screen h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--brand);
+    margin-bottom: 12px;
+  }
+  .success-screen p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────────────── */
+  @media (max-width: 580px) {
+    .field-row { grid-template-columns: 1fr; }
+    .check-grid.cols-2,
+    .check-grid.cols-3 { grid-template-columns: 1fr; }
+    .hero { padding: 40px 20px 36px; }
+    .section-body { padding: 20px 16px; }
+  }
+
+  /* ── SITE NAV ───────────────────────────────────────────────────── */
+  .site-nav{background:#0d1f35;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;position:sticky;top:0;z-index:200}
+  .site-logo{font-family:'DM Serif Display',Georgia,serif;font-size:19px;color:#fff;letter-spacing:.02em;text-decoration:none}
+  .site-logo span{color:#1d9e75}
+  .site-nav-links{display:flex;gap:2px;align-items:center}
+  .site-nl{font-size:12.5px;font-weight:500;color:rgba(255,255,255,.7);padding:5px 11px;border-radius:5px;cursor:pointer;border:none;background:none;transition:.2s;text-decoration:none;display:inline-block}
+  .site-nl:hover{color:#fff;background:rgba(255,255,255,.08)}
+  .site-nl.active{color:#fff;background:rgba(29,158,117,.3)}
+  .site-phone{margin-left:12px;background:#1d9e75;color:#fff;font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:6px;text-decoration:none;letter-spacing:.02em;transition:background .2s;white-space:nowrap}
+  .site-phone:hover{background:#0f6e56}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+  .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+  .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#0d1f35;padding:1rem 2rem;z-index:199;border-top:1px solid rgba(255,255,255,.08)}
+  .mobile-menu.open{display:block}
+  .mobile-menu a{display:block;color:rgba(255,255,255,.8);font-size:15px;font-weight:500;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
+  .mobile-menu a:last-child{border-bottom:none}
+  .mobile-menu a:hover{color:#1d9e75}
+  /* shift sticky progress bar down when nav is present */
+  .progress-wrap{top:64px !important}
+  @media(max-width:768px){.site-nav-links{display:none}.hamburger{display:flex}}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="site-logo" href="index.html">A <span>Clean</span> Routine</a>
+  <div class="site-nav-links">
+    <a class="site-nl" href="index.html">Home</a>
+    <a class="site-nl" href="services.html">Services</a>
+    <a class="site-nl" href="about.html">About</a>
+    <a class="site-nl active" href="quote.html">Get a Quote</a>
+    <a class="site-nl" href="contact.html">Contact</a>
+    <a class="site-phone" href="tel:6788333847">&#9990; (678) 833-3847</a>
+  </div>
+  <button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="quote.html">Get a Quote</a>
+  <a href="contact.html">Contact</a>
+  <a href="tel:6788333847" style="color:#1d9e75;font-weight:600;">&#9990; (678) 833-3847</a>
+</div>
+
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">A Clean Routine — Get Your Free Quote</div>
+  <h1>Tell us about your<br><em>facility</em></h1>
+  <p class="hero-sub">Fill out this form and we'll send you a customized cleaning quote within 1 business day. No phone call required.</p>
+  <div class="hero-badges">
+    <div class="badge"><span class="badge-dot"></span>Fully Insured & Bonded</div>
+    <div class="badge"><span class="badge-dot"></span>Response Within 24 Hours</div>
+    <div class="badge"><span class="badge-dot"></span>Metro Atlanta Area</div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">0% complete</div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div style="max-width:760px;margin:0 auto;padding:20px 24px 0;text-align:center;">
+  <p style="font-size:14px;color:#6b6b6b;">Prefer to talk? Call us at <a href="tel:6788333847" style="color:#1d9e75;font-weight:600;text-decoration:none;">(678) 833-3847</a> and we will walk you through the process.</p>
+</div>
+<div class="form-outer" id="formOuter">
+<form id="intakeForm" novalidate>
+
+  <!-- SECTION 1: CONTACT -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Contact Information</div>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>Business / Organization Name <span class="req">*</span></label>
+        <input type="text" name="business_name" placeholder="e.g. Northside Medical Group" required>
+        <div class="error-msg">Please enter your business name.</div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" name="first_name" placeholder="First name" required>
+          <div class="error-msg">Required.</div>
+        </div>
+        <div class="field">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" name="last_name" placeholder="Last name" required>
+          <div class="error-msg">Required.</div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Phone Number <span class="req">*</span></label>
+          <input type="tel" name="phone" placeholder="(404) 555-0100" required>
+          <div class="error-msg">Please enter a valid phone number.</div>
+        </div>
+        <div class="field">
+          <label>Best Time to Call <span class="opt">(optional)</span></label>
+          <select name="best_time">
+            <option value="">Select a time</option>
+            <option>Morning (8am – 12pm)</option>
+            <option>Afternoon (12pm – 5pm)</option>
+            <option>Evening (5pm – 7pm)</option>
+            <option>No preference</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Email Address <span class="req">*</span></label>
+        <input type="email" name="email" placeholder="you@company.com" required>
+        <div class="error-msg">Please enter a valid email address.</div>
+      </div>
+      <div class="field">
+        <label>Facility Address <span class="req">*</span></label>
+        <input type="text" name="address" placeholder="Street address" required>
+        <div class="error-msg">Please enter the facility address.</div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>City <span class="req">*</span></label>
+          <input type="text" name="city" placeholder="Atlanta" required>
+          <div class="error-msg">Required.</div>
+        </div>
+        <div class="field">
+          <label>ZIP Code <span class="req">*</span></label>
+          <input type="text" name="zip" placeholder="30301" required>
+          <div class="error-msg">Required.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: FACILITY -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Facility Details</div>
+    </div>
+    <div class="section-body">
+      <div class="callout info">
+        <span class="callout-icon">ℹ</span>
+        <span>This section drives your quote. The more detail you provide, the more accurate and competitive your pricing will be.</span>
+      </div>
+
+      <div class="field">
+        <label>Facility Type <span class="req">*</span></label>
+        <div class="check-grid cols-2">
+          <label class="check-item"><input type="radio" name="facility_type" value="Standard office" required> Standard office</label>
+          <label class="check-item"><input type="radio" name="facility_type" value="Medical office (general)"> Medical office (general)</label>
+          <label class="check-item"><input type="radio" name="facility_type" value="Medical office (surgical/specialty)"> Medical — surgical / specialty</label>
+          <label class="check-item"><input type="radio" name="facility_type" value="Retail store"> Retail store</label>
+          <label class="check-item"><input type="radio" name="facility_type" value="Fitness center / gym"> Fitness center / gym</label>
+          <label class="check-item"><input type="radio" name="facility_type" value="Coworking space"> Coworking space</label>
+          <label class="check-item"><input type="radio" name="facility_type" value="School / daycare"> School / daycare</label>
+          <label class="check-item"><input type="radio" name="facility_type" value="Warehouse / industrial"> Warehouse / industrial</label>
+          <label class="check-item"><input type="radio" name="facility_type" value="Restaurant / food service"> Restaurant / food service</label>
+          <label class="check-item"><input type="radio" name="facility_type" value="Other"> Other</label>
+        </div>
+        <div class="error-msg">Please select a facility type.</div>
+      </div>
+
+      <div class="field" id="facilityOtherField" style="display:none">
+        <label>Please describe your facility type <span class="req">*</span></label>
+        <input type="text" name="facility_other" placeholder="Describe your facility">
+      </div>
+
+      <div class="field">
+        <label>Approximate Square Footage <span class="req">*</span></label>
+        <select name="sqft" required>
+          <option value="">Select a range</option>
+          <option>Under 1,000 sq ft</option>
+          <option>1,000 – 2,500 sq ft</option>
+          <option>2,500 – 5,000 sq ft</option>
+          <option>5,000 – 10,000 sq ft</option>
+          <option>10,000 – 25,000 sq ft</option>
+          <option>Over 25,000 sq ft</option>
+        </select>
+        <div class="error-msg">Please select a square footage range.</div>
+      </div>
+      <div class="field">
+        <label>Exact Square Footage <span class="opt">(if known)</span></label>
+        <input type="number" name="sqft_exact" placeholder="e.g. 3,200">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Number of Floors <span class="req">*</span></label>
+          <select name="floors" required>
+            <option value="">Select</option>
+            <option>1</option><option>2</option><option>3</option><option>4+</option>
+          </select>
+          <div class="error-msg">Required.</div>
+        </div>
+        <div class="field">
+          <label>Number of Restrooms <span class="req">*</span></label>
+          <select name="restrooms" required>
+            <option value="">Select</option>
+            <option>0</option><option>1</option><option>2</option>
+            <option>3</option><option>4</option><option>5+</option>
+          </select>
+          <div class="error-msg">Required.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Floor Types Present <span class="req">*</span> <span class="opt">select all that apply</span></label>
+        <div class="check-grid cols-3">
+          <label class="check-item"><input type="checkbox" name="floors_carpet"> Carpet</label>
+          <label class="check-item"><input type="checkbox" name="floors_hardwood"> Hardwood / laminate</label>
+          <label class="check-item"><input type="checkbox" name="floors_tile"> Tile / grout</label>
+          <label class="check-item"><input type="checkbox" name="floors_vinyl"> Vinyl / LVP</label>
+          <label class="check-item"><input type="checkbox" name="floors_concrete"> Concrete</label>
+          <label class="check-item"><input type="checkbox" name="floors_mixed"> Mixed types</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Specialty Areas <span class="opt">select all that apply</span></label>
+        <div class="check-grid cols-2">
+          <label class="check-item"><input type="checkbox" name="area_kitchen"> Kitchen / break room</label>
+          <label class="check-item"><input type="checkbox" name="area_conference"> Conference rooms</label>
+          <label class="check-item"><input type="checkbox" name="area_lobby"> Reception / lobby</label>
+          <label class="check-item"><input type="checkbox" name="area_server"> Server / IT room</label>
+          <label class="check-item"><input type="checkbox" name="area_warehouse"> Warehouse / storage</label>
+          <label class="check-item"><input type="checkbox" name="area_gym"> Gym / fitness area</label>
+          <label class="check-item"><input type="checkbox" name="area_exam"> Patient exam rooms</label>
+          <label class="check-item"><input type="checkbox" name="area_waiting"> Waiting room</label>
+          <label class="check-item"><input type="checkbox" name="area_outdoor"> Outdoor entrance</label>
+          <label class="check-item"><input type="checkbox" name="area_none"> None</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Approximate Number of Workstations / Desks <span class="opt">(optional)</span></label>
+        <select name="desks">
+          <option value="">Select</option>
+          <option>Under 10</option><option>10 – 25</option><option>26 – 50</option>
+          <option>51 – 100</option><option>100+</option><option>Not applicable</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: SCHEDULE -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Cleaning Schedule & Frequency</div>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>How often do you need cleaning? <span class="req">*</span></label>
+        <div class="check-grid cols-2">
+          <label class="check-item"><input type="radio" name="frequency" value="Daily (5x/week)" required> Daily (5x/week)</label>
+          <label class="check-item"><input type="radio" name="frequency" value="3x per week"> 3x per week</label>
+          <label class="check-item"><input type="radio" name="frequency" value="2x per week"> 2x per week</label>
+          <label class="check-item"><input type="radio" name="frequency" value="Weekly"> Weekly</label>
+          <label class="check-item"><input type="radio" name="frequency" value="Bi-weekly"> Bi-weekly</label>
+          <label class="check-item"><input type="radio" name="frequency" value="Monthly"> Monthly</label>
+          <label class="check-item"><input type="radio" name="frequency" value="One-time only"> One-time only</label>
+          <label class="check-item"><input type="radio" name="frequency" value="Not sure yet"> Not sure yet</label>
+        </div>
+        <div class="error-msg">Please select a frequency.</div>
+      </div>
+
+      <div class="field">
+        <label>Preferred Time of Day <span class="req">*</span></label>
+        <div class="check-grid cols-2">
+          <label class="check-item"><input type="radio" name="time_pref" value="During business hours (daytime)" required> During business hours</label>
+          <label class="check-item"><input type="radio" name="time_pref" value="After business hours (evenings)"> After business hours</label>
+          <label class="check-item"><input type="radio" name="time_pref" value="Early morning (before open)"> Early morning</label>
+          <label class="check-item"><input type="radio" name="time_pref" value="Weekends only"> Weekends only</label>
+          <label class="check-item"><input type="radio" name="time_pref" value="Flexible"> Flexible — no preference</label>
+        </div>
+        <div class="callout warn" style="margin-top:12px;">
+          <span class="callout-icon">⚠</span>
+          <span>Daytime cleaning (during business hours) carries a 10–15% scheduling premium due to working around active staff and operations.</span>
+        </div>
+        <div class="error-msg">Please select a preferred time.</div>
+      </div>
+
+      <div class="field">
+        <label>Days of the Week Needed <span class="opt">select all that apply</span></label>
+        <div class="check-grid cols-4">
+          <label class="check-item"><input type="checkbox" name="day_mon"> Monday</label>
+          <label class="check-item"><input type="checkbox" name="day_tue"> Tuesday</label>
+          <label class="check-item"><input type="checkbox" name="day_wed"> Wednesday</label>
+          <label class="check-item"><input type="checkbox" name="day_thu"> Thursday</label>
+          <label class="check-item"><input type="checkbox" name="day_fri"> Friday</label>
+          <label class="check-item"><input type="checkbox" name="day_sat"> Saturday</label>
+          <label class="check-item"><input type="checkbox" name="day_sun"> Sunday</label>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Desired Start Date <span class="req">*</span></label>
+          <select name="start_date" required>
+            <option value="">Select</option>
+            <option>As soon as possible</option>
+            <option>Within 2 weeks</option>
+            <option>Within 1 month</option>
+            <option>1–3 months from now</option>
+            <option>Just getting a quote</option>
+          </select>
+          <div class="error-msg">Required.</div>
+        </div>
+        <div class="field">
+          <label>Preferred Contract Length <span class="req">*</span></label>
+          <select name="contract_length" required>
+            <option value="">Select</option>
+            <option>Month-to-month</option>
+            <option>6-month contract</option>
+            <option>12-month contract</option>
+            <option>Not sure — open to discussion</option>
+          </select>
+          <div class="error-msg">Required.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: ACCESS -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">Access & Security</div>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>How will cleaning staff access the facility? <span class="req">*</span></label>
+        <div class="check-grid cols-2">
+          <label class="check-item"><input type="radio" name="access" value="Key provided" required> Key provided</label>
+          <label class="check-item"><input type="radio" name="access" value="Access card / fob"> Access card / fob</label>
+          <label class="check-item"><input type="radio" name="access" value="Door code provided"> Door code provided</label>
+          <label class="check-item"><input type="radio" name="access" value="Someone will let them in"> Someone will let them in</label>
+          <label class="check-item"><input type="radio" name="access" value="Other"> Other</label>
+        </div>
+        <div class="error-msg">Please select an access method.</div>
+      </div>
+
+      <div class="field">
+        <label>Security or Access Restrictions <span class="opt">select all that apply</span></label>
+        <div class="check-grid cols-2">
+          <label class="check-item"><input type="checkbox" name="sec_none"> No restrictions</label>
+          <label class="check-item"><input type="checkbox" name="sec_signin"> Sign-in at front desk required</label>
+          <label class="check-item"><input type="checkbox" name="sec_restricted"> Restricted areas on site</label>
+          <label class="check-item"><input type="checkbox" name="sec_cameras"> Security cameras throughout</label>
+          <label class="check-item"><input type="checkbox" name="sec_alarm"> Alarm system</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Is there a building or property manager to coordinate with? <span class="opt">(optional)</span></label>
+        <div class="check-grid" style="grid-template-columns: repeat(2, 140px); margin-bottom:12px;">
+          <label class="check-item"><input type="radio" name="has_manager" value="Yes"> Yes</label>
+          <label class="check-item"><input type="radio" name="has_manager" value="No"> No</label>
+        </div>
+        <div class="field-row" id="managerFields" style="display:none; margin-bottom:0;">
+          <div class="field" style="margin-bottom:0">
+            <label>Manager Name</label>
+            <input type="text" name="manager_name" placeholder="Full name">
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label>Manager Phone / Email</label>
+            <input type="text" name="manager_contact" placeholder="Phone or email">
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Additional Access Notes <span class="opt">(optional)</span></label>
+        <textarea name="access_notes" placeholder="e.g. alarm code must be entered within 30 seconds, parking available in rear lot…"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: REQUIREMENTS -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Special Requirements</div>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>Cleaning Product Preferences <span class="req">*</span></label>
+        <div class="check-grid cols-2">
+          <label class="check-item"><input type="radio" name="products" value="No preference" required> No preference</label>
+          <label class="check-item"><input type="radio" name="products" value="Eco-friendly / green only"> Eco-friendly / green only</label>
+          <label class="check-item"><input type="radio" name="products" value="Fragrance-free"> Fragrance-free</label>
+          <label class="check-item"><input type="radio" name="products" value="Hospital-grade disinfectants"> Hospital-grade disinfectants</label>
+          <label class="check-item"><input type="radio" name="products" value="Client will supply products"> Client will supply products</label>
+          <label class="check-item"><input type="radio" name="products" value="Other"> Other</label>
+        </div>
+        <div class="error-msg">Please select a preference.</div>
+      </div>
+
+      <div class="field">
+        <label>Are there areas that should NOT be cleaned or accessed? <span class="opt">(optional)</span></label>
+        <textarea name="restricted_areas" placeholder="e.g. server room, executive office on 3rd floor, storage room B…"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Staff Certification Requirements <span class="opt">select all that apply</span></label>
+        <div class="check-grid cols-2">
+          <label class="check-item"><input type="checkbox" name="cert_none"> None required</label>
+          <label class="check-item"><input type="checkbox" name="cert_osha"> OSHA Bloodborne Pathogens</label>
+          <label class="check-item"><input type="checkbox" name="cert_hipaa"> HIPAA Awareness</label>
+          <label class="check-item"><input type="checkbox" name="cert_bg"> Background check required</label>
+        </div>
+        <div class="callout info" style="margin-top:12px;">
+          <span class="callout-icon">ℹ</span>
+          <span>All contractors assigned to medical facilities hold current OSHA Bloodborne Pathogens and HIPAA Awareness certifications as a standard requirement.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: ADD-ONS -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Additional Services</div>
+    </div>
+    <div class="section-body">
+      <p style="font-size:13px; color:var(--muted); margin-bottom:16px;">Check any services you may be interested in. These can be added to your base contract or scheduled separately.</p>
+      <div class="check-grid cols-2">
+        <label class="check-item"><input type="checkbox" name="add_carpet"> Carpet shampooing</label>
+        <label class="check-item"><input type="checkbox" name="add_floor"> Floor stripping & waxing</label>
+        <label class="check-item"><input type="checkbox" name="add_window_int"> Window washing (interior)</label>
+        <label class="check-item"><input type="checkbox" name="add_window_ext"> Window washing (exterior)</label>
+        <label class="check-item"><input type="checkbox" name="add_tile"> Tile & grout deep cleaning</label>
+        <label class="check-item"><input type="checkbox" name="add_upholstery"> Upholstery cleaning</label>
+        <label class="check-item"><input type="checkbox" name="add_postconstruction"> Post-construction cleanup</label>
+        <label class="check-item"><input type="checkbox" name="add_pressure"> Pressure washing</label>
+        <label class="check-item"><input type="checkbox" name="add_porter"> Day porter services</label>
+        <label class="check-item"><input type="checkbox" name="add_quarterly"> Quarterly deep clean</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: BUDGET -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">Budget & Final Notes</div>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>Monthly Cleaning Budget <span class="opt">(optional)</span></label>
+        <div class="check-grid cols-2">
+          <label class="check-item"><input type="radio" name="budget" value="Under $500/month"> Under $500/month</label>
+          <label class="check-item"><input type="radio" name="budget" value="$500 – $1,000/month"> $500 – $1,000/month</label>
+          <label class="check-item"><input type="radio" name="budget" value="$1,000 – $2,500/month"> $1,000 – $2,500/month</label>
+          <label class="check-item"><input type="radio" name="budget" value="$2,500 – $5,000/month"> $2,500 – $5,000/month</label>
+          <label class="check-item"><input type="radio" name="budget" value="$5,000+/month"> $5,000+/month</label>
+          <label class="check-item"><input type="radio" name="budget" value="No budget set"> No budget set — open to proposal</label>
+        </div>
+        <div class="callout warn" style="margin-top:12px;">
+          <span class="callout-icon">⚠</span>
+          <span>Our monthly contract minimum is $600–$750. For smaller facilities, we offer one-time and quarterly service options.</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>How did you hear about us? <span class="opt">(optional)</span></label>
+        <select name="referral_source">
+          <option value="">Select</option>
+          <option>Google search</option>
+          <option>Google Business Profile</option>
+          <option>Referral from a colleague</option>
+          <option>Social media</option>
+          <option>Direct outreach / cold call</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Anything else we should know before preparing your quote? <span class="opt">(optional)</span></label>
+        <textarea name="notes" placeholder="Special instructions, concerns, current provider, anything that helps us serve you better…" style="min-height:110px;"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-section">
+    <h3>Ready for your quote?</h3>
+    <p>We'll review your submission and respond within 1 business day.</p>
+    <button type="submit" class="btn-submit">
+      Submit Quote Request
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 8h10M9 4l4 4-4 4"/>
+      </svg>
+    </button>
+  </div>
+
+</form>
+</div>
+
+<!-- SUCCESS -->
+<div class="success-screen" id="successScreen">
+  <div class="success-icon">✓</div>
+  <h2>Quote request received!</h2>
+  <p>Thank you for reaching out. We've received your information and will send your customized cleaning quote within <strong>1 business day</strong>.<br><br>If you need to reach us sooner, call or text us at <strong>(678) 833-3847</strong> or email <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87e4e8e9f3e6e4f3c7e6e4f5e8f2f3eee9e2a9e4e8ea">[email&#160;protected]</a></strong>.</p>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Progress tracking ────────────────────────────────────────────
+  const requiredFields = document.querySelectorAll('[required]');
+  const progressFill  = document.getElementById('progressFill');
+  const progressLabel = document.getElementById('progressLabel');
+
+  function updateProgress() {
+    const groups = {};
+    requiredFields.forEach(f => {
+      const name = f.name;
+      if (!groups[name]) groups[name] = false;
+      if (f.type === 'radio' || f.type === 'checkbox') {
+        if (f.checked) groups[name] = true;
+      } else {
+        if (f.value.trim()) groups[name] = true;
+      }
+    });
+    const keys  = Object.keys(groups);
+    const done  = Object.values(groups).filter(Boolean).length;
+    const pct   = keys.length ? Math.round((done / keys.length) * 100) : 0;
+    progressFill.style.width  = pct + '%';
+    progressLabel.textContent = pct + '% complete';
+  }
+
+  document.getElementById('intakeForm').addEventListener('input', updateProgress);
+  document.getElementById('intakeForm').addEventListener('change', updateProgress);
+  updateProgress();
+
+  // ── Conditional: facility "Other" ────────────────────────────────
+  document.querySelectorAll('[name="facility_type"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('facilityOtherField').style.display =
+        r.value === 'Other' && r.checked ? 'block' : 'none';
+    });
+  });
+
+  // ── Conditional: building manager ───────────────────────────────
+  document.querySelectorAll('[name="has_manager"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('managerFields').style.display =
+        r.value === 'Yes' ? 'grid' : 'none';
+    });
+  });
+
+  // ── Validation & submit ──────────────────────────────────────────
+  document.getElementById('intakeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let valid = true;
+
+    // Clear previous errors
+    document.querySelectorAll('.error-msg.show').forEach(el => el.classList.remove('show'));
+    document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+    // Validate text / email / tel / select inputs
+    document.querySelectorAll('input[required]:not([type="radio"]):not([type="checkbox"]), select[required], textarea[required]').forEach(field => {
+      if (!field.value.trim()) {
+        field.classList.add('error');
+        const msg = field.closest('.field')?.querySelector('.error-msg');
+        if (msg) msg.classList.add('show');
+        valid = false;
+      }
+    });
+
+    // Validate radio groups marked required
+    const radioGroups = {};
+    document.querySelectorAll('input[type="radio"][required]').forEach(r => {
+      if (!radioGroups[r.name]) radioGroups[r.name] = false;
+      if (r.checked) radioGroups[r.name] = true;
+    });
+    Object.entries(radioGroups).forEach(([name, checked]) => {
+      if (!checked) {
+        const group = document.querySelector(`[name="${name}"]`);
+        const msg = group?.closest('.field')?.querySelector('.error-msg');
+        if (msg) msg.classList.add('show');
+        valid = false;
+      }
+    });
+
+    // Email format
+    const emailField = document.querySelector('[name="email"]');
+    if (emailField && emailField.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+      emailField.classList.add('error');
+      const msg = emailField.closest('.field')?.querySelector('.error-msg');
+      if (msg) { msg.textContent = 'Please enter a valid email address.'; msg.classList.add('show'); }
+      valid = false;
+    }
+
+    if (!valid) {
+      const firstError = document.querySelector('.error-msg.show');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // ── SUCCESS ──────────────────────────────────────────────────
+    // In production: replace this block with a fetch() POST to your backend or form service
+    // e.g. Formspree, Netlify Forms, EmailJS, or your own endpoint
+    document.getElementById('formOuter').style.display = 'none';
+    document.getElementById('successScreen').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+// ── PRE-FILL FROM SERVICES PAGE ─────────────────────────────────
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get('type');
+  if(!type) return;
+
+  // Select matching facility type radio
+  const radios = document.querySelectorAll('[name="facility_type"]');
+  radios.forEach(radio => {
+    if(radio.value === type) radio.checked = true;
+  });
+
+  // Office, Retail & Commercial pre-fills
+  if(type === 'Standard office'){
+    const noPreference = document.querySelector('[name="products"][value="No preference"]');
+    if(noPreference) noPreference.checked = true;
+    const noCert = document.querySelector('[name="cert_none"]');
+    if(noCert) noCert.checked = true;
+  }
+
+  // Medical & Healthcare pre-fills
+  if(type === 'Medical office (general)'){
+    const hospitalGrade = document.querySelector('[name="products"][value="Hospital-grade disinfectants"]');
+    if(hospitalGrade) hospitalGrade.checked = true;
+    const osha = document.querySelector('[name="cert_osha"]');
+    const hipaa = document.querySelector('[name="cert_hipaa"]');
+    const bg = document.querySelector('[name="cert_bg"]');
+    if(osha) osha.checked = true;
+    if(hipaa) hipaa.checked = true;
+    if(bg) bg.checked = true;
+  }
+
+  // Show Other field if needed
+  const otherRadio = document.querySelector('[name="facility_type"][value="Other"]');
+  if(otherRadio && otherRadio.checked){
+    const otherField = document.getElementById('facilityOtherField');
+    if(otherField) otherField.style.display = 'block';
+  }
+
+  // Highlight all pre-selected check items visually
+  document.querySelectorAll('.check-item input:checked').forEach(input => {
+    const item = input.closest('.check-item');
+    if(item){
+      item.style.borderColor = '#1d9e75';
+      item.style.background = '#e1f5ee';
+      item.style.color = '#0f6e56';
+      item.style.fontWeight = '500';
+    }
+  });
+
+  // Update progress bar
+  updateProgress();
+
+  // Scroll to facility section
+  setTimeout(() => {
+    const facilitySection = document.querySelector('[name="facility_type"]');
+    if(facilitySection){
+      facilitySection.closest('.form-section').scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  }, 500);
+})();
+</script>
+
+<!-- FOOTER -->
+<footer style="background:#0d1f35;padding:40px 2rem 24px;margin-top:60px;">
+  <div style="max-width:1000px;margin:0 auto;padding-bottom:28px;">
+    <div style="margin-bottom:24px;">
+      <div style="font-family:'DM Serif Display',Georgia,serif;font-size:18px;color:#fff;margin-bottom:10px;">A <span style="color:#1d9e75;">Clean</span> Routine</div>
+      
+    </div>
+    <div style="margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;">Pages</div>
+      <div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:8px 28px;">
+        <a href="index.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Home</a>
+        <a href="services.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Services</a>
+        <a href="about.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">About</a>
+        <a href="contact.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;">Contact</div>
+      <div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:6px 28px;">
+        <a href="tel:6788333847" style="font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;">(678) 833-3847</a>
+        <span style="font-size:13px;color:rgba(255,255,255,.55);">contact&#64;acroutine&#46;com</span>
+        <span style="font-size:13px;color:rgba(255,255,255,.55);">Available Mon&#8211;Sat</span>
+      </div>
+    </div>
+  </div>
+  <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;jus

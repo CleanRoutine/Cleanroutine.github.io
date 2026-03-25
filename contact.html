@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | A Clean Routine</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0d1f35;--navy2:#162840;--green:#1d9e75;--green-dark:#0f6e56;--cream:#f7f5f0;--white:#fff;--text:#1a1a2e;--muted:#5f6b7a;--border:#e2dfd8;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.7;overflow-x:hidden}
+
+nav{background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;position:sticky;top:0;z-index:100;animation:navSlide .5s ease both}
+@keyframes navSlide{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.logo{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;letter-spacing:.02em;text-decoration:none}
+.logo span{color:var(--green)}
+.nav-links{display:flex;gap:2px;align-items:center}
+.nl{font-size:13px;font-weight:500;color:rgba(255,255,255,.7);padding:6px 12px;border-radius:5px;cursor:pointer;border:none;background:none;transition:.2s;text-decoration:none;display:inline-block}
+.nl:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nl.active{color:#fff;background:rgba(29,158,117,.3)}
+.nav-phone{margin-left:12px;background:var(--green);color:#fff;font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:6px;text-decoration:none;letter-spacing:.02em;transition:background .2s;white-space:nowrap}
+.nav-phone:hover{background:var(--green-dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--navy);padding:1rem 2rem;z-index:99;border-top:1px solid rgba(255,255,255,.08)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;color:rgba(255,255,255,.8);font-size:15px;font-weight:500;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover{color:var(--green)}
+
+/* PAGE HERO */
+.page-hero{background:var(--navy);padding:64px 2rem 72px;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 0%,rgba(29,158,117,.12) 0%,transparent 60%)}
+.pg-tag{display:inline-block;background:rgba(29,158,117,.2);color:var(--green);border:1px solid rgba(29,158,117,.3);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px;position:relative;animation:fadeUp .7s .2s ease both}
+.page-hero h1{font-family:'DM Serif Display',serif;font-size:42px;color:#fff;line-height:1.15;margin-bottom:14px;position:relative;animation:fadeUp .7s .35s ease both}
+.page-hero p{color:rgba(255,255,255,.68);font-size:16px;max-width:520px;margin:0 auto;position:relative;animation:fadeUp .7s .5s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+
+
+
+/* CONTACT SPLIT */
+.contact-section{padding:80px 2rem;max-width:1000px;margin:0 auto}
+.contact-split{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start}
+
+/* CONTACT INFO */
+.contact-info-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px 32px}
+.contact-info-header{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.contact-info h2{font-family:'DM Serif Display',serif;font-size:30px;color:var(--navy);margin-bottom:12px}
+.contact-info-card h2{font-family:'DM Serif Display',serif;font-size:26px;color:var(--navy);margin-bottom:10px}
+.contact-info-card p{font-size:14px;color:var(--muted);line-height:1.75}
+
+.contact-item{display:flex;gap:16px;align-items:flex-start;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.contact-dot{width:44px;height:44px;background:rgba(29,158,117,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .25s}
+.contact-item:hover .contact-dot{background:rgba(29,158,117,.2)}
+.contact-dot svg{width:20px;height:20px;fill:var(--green)}
+.contact-item-label{font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.contact-item-val{font-size:15px;color:var(--text);font-weight:500}
+.contact-item-val a{color:var(--text);text-decoration:none;transition:color .2s}
+.contact-item-val a:hover{color:var(--green)}
+.contact-item-sub{font-size:13px;color:var(--muted);margin-top:2px}
+
+
+
+/* CONTACT FORM */
+.contact-form{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px 32px}
+.contact-form h3{font-family:'DM Serif Display',serif;font-size:24px;color:var(--navy);margin-bottom:6px}
+.contact-form p{font-size:14px;color:var(--muted);margin-bottom:28px}
+.form-group{margin-bottom:20px}
+.form-group label{font-size:12px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:7px}
+.form-group input,.form-group textarea,.form-group select{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-size:14px;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);transition:border-color .2s,box-shadow .2s,background .2s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--green);background:var(--white);box-shadow:0 0 0 3px rgba(29,158,117,.1)}
+.form-group textarea{height:120px;resize:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-row .form-group{margin-bottom:0}
+.submit-btn{width:100%;background:var(--green);color:#fff;font-size:15px;font-weight:600;padding:14px;border-radius:8px;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;margin-top:4px;letter-spacing:.02em}
+.submit-btn:hover{background:var(--green-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(29,158,117,.3)}
+
+/* SUCCESS */
+.success-msg{display:none;text-align:center;padding:32px 24px}
+.success-icon{width:64px;height:64px;background:rgba(29,158,117,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.success-icon svg{width:32px;height:32px}
+.success-msg h3{font-family:'DM Serif Display',serif;font-size:24px;color:var(--navy);margin-bottom:8px}
+.success-msg p{font-size:14px;color:var(--muted);line-height:1.7}
+
+
+
+footer{background:var(--navy);padding:48px 2rem 28px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;justify-content:space-between;align-items:center;max-width:1000px;margin:0 auto;flex-wrap:wrap;gap:8px}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.3)}
+
+@media(max-width:768px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .page-hero h1{font-size:30px}
+  .contact-split{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .contact-section{padding:56px 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">A <span>Clean</span> Routine</a>
+  <div class="nav-links">
+    <a class="nl" href="index.html">Home</a>
+    <a class="nl" href="services.html">Services</a>
+    <a class="nl" href="about.html">About</a>
+    <a class="nl" href="quote.html">Get a Quote</a>
+    <a class="nl active" href="contact.html">Contact</a>
+    <a class="nav-phone" href="tel:6788333847">&#9990; (678) 833-3847</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="quote.html">Get a Quote</a>
+  <a href="contact.html">Contact</a>
+  <a href="tel:6788333847" style="color:var(--green);font-weight:600;">&#9990; (678) 833-3847</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="pg-tag">Get In Touch</div>
+  <h1>Contact A Clean Routine</h1>
+  <p>Have a question or ready to get started? We respond to all inquiries within one business day.</p>
+</div>
+
+<!-- CONTACT SPLIT -->
+<div class="contact-section">
+  <div class="contact-split">
+
+    <!-- LEFT: INFO -->
+    <div class="reveal">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:36px 32px;">
+        <div style="padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid var(--border);">
+          <h2 style="font-family:'DM Serif Display',serif;font-size:26px;color:var(--navy);margin-bottom:10px;">We Are Here to Help</h2>
+          <p style="font-size:14px;color:var(--muted);line-height:1.75;">Whether you have a question about our services, need a custom quote, or are ready to get started, reach out and we will get back to you promptly.</p>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-val"><a href="tel:6788333847">(678) 833-3847</a></div>
+            <div class="contact-item-sub">Available Mon&#8211;Sat, 8am&#8211;6pm</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val" id="contact-email"></div>
+            <div class="contact-item-sub">We respond within one business day</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+          <div>
+            <div class="contact-item-label">Service Area</div>
+            <div class="contact-item-val">Metro Atlanta, Georgia</div>
+            <div class="contact-item-sub">Including Marietta, Alpharetta, Norcross, Sandy Springs, Buckhead, Midtown, and surrounding areas</div>
+          </div>
+        </div>
+
+        <div class="contact-item" style="margin-bottom:0;padding-bottom:0;border-bottom:none;">
+          <div class="contact-dot"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div>
+            <div class="contact-item-label">Office Hours</div>
+            <div class="contact-item-val">Mon&#8211;Fri, 8am&#8211;6pm</div>
+            <div class="contact-item-sub">Sat, 9am&#8211;2pm. Cleaning services available evenings, weekends, and after hours by contract.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="reveal reveal-d1">
+      <div class="contact-form" id="contactFormWrap">
+        <h3>Send Us a Message</h3>
+        <p>Fill out the form below and we will be in touch shortly.</p>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" name="first_name" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" name="last_name" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:20px">
+            <label>Company / Business Name</label>
+            <input type="text" name="company" placeholder="Acme Properties LLC">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="jane@company.com" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="(404) 555-0100">
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select name="subject">
+              <option value="">Select a subject</option>
+              <option>General Inquiry</option>
+              <option>Request a Quote</option>
+              <option>Existing Client</option>
+              <option>Partnership Inquiry</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" placeholder="How can we help you?" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+        <div class="success-msg" id="successMsg">
+          <div class="success-icon"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="#1d9e75" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Message Received</h3>
+          <p>Thank you for reaching out. We will respond within one business day. If your matter is urgent, call us directly at <strong>(678) 833-3847</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:1000px;margin:0 auto;padding-bottom:28px;">
+    <div style="margin-bottom:24px;">
+      <div style="font-family:'DM Serif Display',Georgia,serif;font-size:18px;color:#fff;margin-bottom:10px;">A <span style="color:#1d9e75;">Clean</span> Routine</div>
+    </div>
+    <div style="margin-bottom:20px;">
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;">Pages</div>
+      <div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:8px 28px;">
+        <a href="index.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Home</a>
+        <a href="services.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Services</a>
+        <a href="about.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">About</a>
+        <a href="quote.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Get a Quote</a>
+        <a href="contact.html" style="font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;">Contact</div>
+      <div style="display:flex;flex-direction:row;flex-wrap:wrap;gap:6px 28px;">
+        <a href="tel:6788333847" style="font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;">(678) 833-3847</a>
+        <span style="font-size:13px;color:rgba(255,255,255,.55);" id="footer-email"></span>
+        <span style="font-size:13px;color:rgba(255,255,255,.55);">Available Mon&#8211;Sat</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&#169; 2026 A Clean Routine LLC. All rights reserved.</p>
+    <p>Reliable. Professional. Detail-Driven.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById("footer-email").textContent="contact@acroutine.com";
+document.getElementById("contact-email").textContent="contact@acroutine.com";
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  let valid=true;
+  this.querySelectorAll('[required]').forEach(field=>{
+    if(!field.value.trim()){field.style.borderColor='#c0392b';valid=false;}
+    else{field.style.borderColor='';}
+  });
+  const email=this.querySelector('[type="email"]');
+  if(email&&email.value&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){email.style.borderColor='#c0392b';valid=false;}
+  if(!valid)return;
+  this.style.display='none';
+  document.getElementById('successMsg').style.display='block';
+});
+function revealAll(){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));}
+if('IntersectionObserver' in window){
+  const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.05});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  setTimeout(revealAll,800);
+}else{revealAll();}
+</script>
+</body>
+</html>
