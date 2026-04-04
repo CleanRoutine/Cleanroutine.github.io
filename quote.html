@@ -949,7 +949,7 @@
 <div class="success-screen" id="successScreen">
   <div class="success-icon">✓</div>
   <h2>Quote request received!</h2>
-  <p>Thank you for reaching out. We've received your information and will send your customized cleaning quote within <strong>1 business day</strong>.<br><br>If you need to reach us sooner, call or text us at <strong>(678) 833-3847</strong> or email <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87e4e8e9f3e6e4f3c7e6e4f5e8f2f3eee9e2a9e4e8ea">[email&#160;protected]</a></strong>.</p>
+  <p>Thank you for reaching out. We've received your information and will send your customized cleaning quote within <strong>1 business day</strong>.<br><br>If you need to reach us sooner, call or text us at <strong>(678) 833-3847</strong> or email <strong><a href="mailto:contact@acroutine.com" id="successEmail"></a></strong>.</p>
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
@@ -980,6 +980,9 @@
   document.getElementById('intakeForm').addEventListener('input', updateProgress);
   document.getElementById('intakeForm').addEventListener('change', updateProgress);
   updateProgress();
+  // Set email via JS to prevent Cloudflare obfuscation
+  var se = document.getElementById('successEmail');
+  if(se){ se.textContent = ['contact','acroutine.com'].join('@'); se.href = 'mailto:' + ['contact','acroutine.com'].join('@'); }
 
   // ── Conditional: facility "Other" ────────────────────────────────
   document.querySelectorAll('[name="facility_type"]').forEach(r => {
