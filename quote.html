@@ -1045,12 +1045,32 @@
       return;
     }
 
-    // ── SUCCESS ──────────────────────────────────────────────────
-    // In production: replace this block with a fetch() POST to your backend or form service
-    // e.g. Formspree, Netlify Forms, EmailJS, or your own endpoint
-    document.getElementById('formOuter').style.display = 'none';
-    document.getElementById('successScreen').style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // ── SUBMIT TO FORMSPREE ──────────────────────────────────────
+    const submitBtn = document.querySelector('.btn-submit');
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    const data = new FormData(this);
+    fetch('https://formspree.io/f/xvzvvkln', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(res => {
+        if (res.ok) {
+          document.getElementById('formOuter').style.display = 'none';
+          document.getElementById('successScreen').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          submitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Submit Quote Request';
+          submitBtn.disabled = false;
+          alert('Something went wrong. Please try again or call us directly at (678) 833-3847.');
+        }
+      })
+      .catch(() => {
+        submitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Submit Quote Request';
+        submitBtn.disabled = false;
+        alert('Something went wrong. Please try again or call us directly at (678) 833-3847.');
+      });
   });
 
 // ── PRE-FILL FROM SERVICES PAGE ─────────────────────────────────
